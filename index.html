@@ -121,15 +121,26 @@
   @keyframes settle { to { transform: scale(1); } }
 
   @media (min-width: 720px) {
-    .content { padding: 0 48px 72px; }
-    .actions { grid-template-columns: 1fr 1fr; }
-    .stage > img { object-position: 50% 28%; }
+    .stage { background: var(--ink); }
+    .stage > img {
+      inset: 0 0 0 auto;
+      width: 74%;
+      object-position: 50% 30%;
+      -webkit-mask-image: linear-gradient(to right, transparent 0, #000 26%);
+      mask-image: linear-gradient(to right, transparent 0, #000 26%);
+    }
+    .stage::before {
+      background: linear-gradient(to top, rgb(29 20 19 / .85) 0%, rgb(29 20 19 / 0) 30%);
+    }
+    .content { max-width: none; padding: 0 0 72px max(48px, 5vw); }
+    h1 { font-size: clamp(2rem, 4.2vw, 3.6rem); }
+    .actions { grid-template-columns: 1fr; max-width: 360px; }
   }
   @media (max-width: 719px) {
     .stage { background: var(--ink); }
-    .stage > img { height: 66dvh; object-position: 44% 40%; }
+    .stage > img { height: 56dvh; object-position: 10% 40%; }
     .stage::before {
-      background: linear-gradient(to bottom, rgb(29 20 19 / 0) 0, rgb(29 20 19 / 0) 40dvh, var(--ink) 66dvh);
+      background: linear-gradient(to bottom, rgb(29 20 19 / 0) 0, rgb(29 20 19 / 0) 36dvh, var(--ink) 56dvh);
     }
     .band { letter-spacing: .18em; }
     .btn { letter-spacing: .1em; }
